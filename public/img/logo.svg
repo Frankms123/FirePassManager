@@ -1,0 +1,83 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo circular con gradiente -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Círculo de fondo -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGradient)"/>
+  
+  <!-- Círculo interior decorativo -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  
+  <!-- Escudo protector -->
+  <path d="M 100 35 L 140 50 L 140 85 C 140 110 125 130 100 140 C 75 130 60 110 60 85 L 60 50 Z" 
+        fill="url(#shieldGradient)" 
+        filter="url(#shadow)" 
+        stroke="#667eea" 
+        stroke-width="3"/>
+  
+  <!-- Candado central -->
+  <g filter="url(#glow)">
+    <!-- Cuerpo del candado -->
+    <rect x="85" y="85" width="30" height="35" rx="5" fill="#667eea"/>
+    
+    <!-- Arco del candado -->
+    <path d="M 90 85 L 90 75 C 90 68 94 63 100 63 C 106 63 110 68 110 75 L 110 85" 
+          fill="none" 
+          stroke="#667eea" 
+          stroke-width="6" 
+          stroke-linecap="round"/>
+    
+    <!-- Ojo de la cerradura -->
+    <circle cx="100" cy="97" r="4" fill="white"/>
+    <rect x="98" y="97" width="4" height="12" rx="2" fill="white"/>
+  </g>
+  
+  <!-- Puntos decorativos alrededor -->
+  <circle cx="70" cy="60" r="3" fill="rgba(255,255,255,0.6)">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="130" cy="60" r="3" fill="rgba(255,255,255,0.6)">
+    <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="70" cy="140" r="3" fill="rgba(255,255,255,0.6)">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="130" cy="140" r="3" fill="rgba(255,255,255,0.6)">
+    <animate attributeName="opacity" values="1;0.6;1" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Estrellas de seguridad -->
+  <path d="M 50 100 L 52 102 L 50 104 L 48 102 Z" fill="rgba(255,255,255,0.7)">
+    <animateTransform attributeName="transform" type="rotate" from="0 50 100" to="360 50 100" dur="4s" repeatCount="indefinite"/>
+  </path>
+  <path d="M 150 100 L 152 102 L 150 104 L 148 102 Z" fill="rgba(255,255,255,0.7)">
+    <animateTransform attributeName="transform" type="rotate" from="360 150 100" to="0 150 100" dur="4s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Texto del logo (opcional) -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">
+    SecurePass
+  </text>
+</svg>

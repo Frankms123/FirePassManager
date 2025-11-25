@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /dataUser/{document=**} {
+      allow read:if true;
+      allow create: if request.resource.data.iduser is string &&
+              request.resource.data.userName is string &&
+              request.resource.data.email is string;
+      allow update: if true;
+      allow delete: if false;
+    }
+
+    match /dataPassword/{documentId} {
+      allow read, update, delete: if request.auth != null && 
+              request.auth.uid == resource.data.uid;
+      allow create: if request.auth != null &&
+              request.resource.data.website is string &&
+              request.resource.data.username is string &&
+              request.resource.data.password is string &&
+              request.resource.data.category is string &&
+              (request.resource.data.expiryDate is timestamp || 
+              request.resource.data.expiryDate == null) &&
+              request.resource.data.notes is string &&
+              request.resource.data.uid == request.auth.uid;
+    }
+  }
+}

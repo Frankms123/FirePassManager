@@ -7,6 +7,12 @@ function togglePassword(inputId) {
 }
 
 function socialRegister(platform) {
+    const termsAccepted = document.getElementById('invalidCheck').checked;
+    if (!termsAccepted) {
+        alert("Debes aceptar los Términos y Condiciones para continuar.");
+        return;
+    }
+
     var provider = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth()
@@ -34,6 +40,12 @@ function saveUserIfNew(user) {
 
 document.getElementById('registerForm').addEventListener('submit', function (e) {
     e.preventDefault();
+
+    const termsAccepted = document.getElementById('invalidCheck').checked;
+    if (!termsAccepted) {
+        alert("Debes aceptar los Términos y Condiciones para continuar.");
+        return;
+    }
 
     const name = document.getElementById('name').value
     const email = document.getElementById('email').value
